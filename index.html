@@ -22,3 +22,22 @@
             </div>
         </nav>
     </header>
+<!-- This is the Navbar it shows the sitename, price and the carton buton as well as a icon cart. -->
+
+<div class="container filters">
+
+    <div class="filters-container">
+        <span class="name">SORT BY:</span>
+        <div class="filters-selection">
+            <button v-for="filter in filters" @click="selectedFilter = filter"
+             v-bind:class="{ active: isSelectedFilter(filter) }">{{filter}}</button>
+        </div>
+    </div>
+    <div class="filters-container">
+        <div class="filters-selection">
+            <button v-for="order in orderBy" @click="selectedOrder = order" 
+            v-bind:class="{ active: isSelectedOrder(order) }">{{order}}</button>
+        </div>
+    </div>
+</div>
+<!-- This is the Sorting section user can choose to sort the lessons by the following options. -->
