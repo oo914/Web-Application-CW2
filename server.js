@@ -15,12 +15,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.use((req, res, next) => {
-//     console.log("image exists");
-//     next();
-// });
-
-
 // connect to db
 let db;
 MongoClient.connect('mongodb+srv://OzencOCAK:OzencOcak@webappcoursework.cd2jx.mongodb.net/', {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
@@ -34,7 +28,7 @@ app.param('collection', (req, res, next, collection) => {
 });
 
 // GET route to get all records from database
-app.get('/api/:collection', (req, res, next) => {
+app.get('/collection/:collection', (req, res, next) => {
     req.collection.find({}).toArray((e, results) => {
         if (e) return next();
         res.json(results);
@@ -42,7 +36,7 @@ app.get('/api/:collection', (req, res, next) => {
 });
 
 // POST route to add record to database
-app.post('/api/:collection', (req, res, next) => {
+app.post('/collection/:collection', (req, res, next) => {
     req.collection.insert(req.body, (e, results) => {
         if (e) return next();
         res.json(results.ops);
@@ -50,7 +44,7 @@ app.post('/api/:collection', (req, res, next) => {
 });
 
 // PUT route to update record in database
-app.put('/api/:collection/:id', (req, res, next) => {
+app.put('/collection/:collection/:id', (req, res, next) => {
     req.collection.updateOne(
         { _id: new ObjectID(req.params.id) },
         { $set: req.body },
@@ -62,7 +56,7 @@ app.put('/api/:collection/:id', (req, res, next) => {
 });
 
 // PUT route to reduce value of specified attribute of the record in database
-app.put('/api/:collection/:id/reduce/:name/:value', (req, res, next) => {
+app.put('/collection/:collection/:id/reduce/:name/:value', (req, res, next) => {
 
     let value = -1 * parseInt(req.params.value);
     let name = req.params.name;
