@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs")
 const cors = require("cors");
 const MongoClient = require('mongodb').MongoClient;
 
@@ -23,7 +24,7 @@ app.use((req, res, next) => {
 // connect to db
 let db;
 MongoClient.connect('mongodb+srv://OzencOCAK:OzencOcak@webappcoursework.cd2jx.mongodb.net/', {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
-    db = client.db('webstore');
+    db = client.db('coursework2');
 });
 
 
