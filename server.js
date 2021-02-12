@@ -9,8 +9,8 @@ const ObjectID = require('mongodb').ObjectID;
 app.use(express.json());
 app.use(cors());
 
-app.use((request, response, next) => {
-    console.log("Requested url: "+ request.url);
+app.use((req, res, next) => {
+    console.log("Requested url: "+ req.url);
     next();
 });
 
@@ -60,8 +60,11 @@ app.put('/api/:collection/:id', (req, res, next) => {
         });
 });
 
+// PUT route to reduce value of specified attribute of the record in database
+app.put('/api/:collection/:id/reduce/:name/:value', (req, res, next) => {
 
-app.put('/api/:collection/:id', (req, res, next) => {
+    let value = -1 * parseInt(req.params.value);
+    let name = req.params.name;
 
     const attr = {};
     attr[name] = value;
