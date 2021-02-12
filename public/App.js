@@ -80,7 +80,7 @@ let app = new Vue({
         },
         addOrder(body) {
 
-            fetch('/api/Orders', {
+            fetch('/api/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
