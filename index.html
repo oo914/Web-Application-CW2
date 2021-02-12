@@ -11,3 +11,14 @@
 </head> 
 <!-- This is the script tag as well as the stylesheets linked to the website.  -->
 <body>
+
+<div id="app">
+        <header> 
+        <nav>
+            <div class="container">
+               <h1 v-text="sitename"></h1> 
+                <button @click="showCheckout(true)" class="cart-btn" :disabled="!hasItemInCart">£{{ cartTotal }}<i
+                     class="fas fa-shopping-basket"></i></button>
+            </div>
+        </nav>
+    </header>
