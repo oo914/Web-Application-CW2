@@ -85,6 +85,17 @@ app.put('/api/:collection/:id/reduce/:name/:value', (req, res, next) => {
 let publicPath = path.resolve(__dirname, 'public');
 app.use(express.static(publicPath));
 
+app.use(function(req, res, next) {
+    
+    var filePath = path.join(__dirname, "static", req.url);
+    
+    fs.stat(filePath, function(err, fileInfo) {
+        if (err) { next(); return; }
+        if (fileInfo.isFile()) res.sendFile(filePath);
+        else next();
+    });
+});
+
 
 // 404 middleware
 app.use((req, res) => {
