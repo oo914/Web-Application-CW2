@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 
 // connect to db
 let db;
-MongoClient.connect('mongodb+srv://OzencOCAK:OzencOcak@webappcoursework.cd2jx.mongodb.net/', {useNewUrlParser: true, useUnifiedTopology: true}, (err, db) => {
+MongoClient.connect('mongodb+srv://OzencOCAK:OzencOcak@webappcoursework.cd2jx.mongodb.net/', {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
     db = client.db('webstore');
 });
 
